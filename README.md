@@ -1,4 +1,6 @@
 # Proyecto: Libreria bade de datos
+Verción de c++ = 12.2.0
+
 El proyecto tiene el proposito de ser una base de datos funcional, para una libreria de una casa. Los datos seran guardados en un txt, que sera leido y modificado por el programa, ordenando los datos por el numero de su id.
 
 ## Descripción del avance 1
