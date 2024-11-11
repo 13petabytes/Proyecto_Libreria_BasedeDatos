@@ -47,7 +47,7 @@ Como resultado de la ejecución del programa, se tendrían dos resultados posibl
 
 ## Desarrollo de competencias
 
-
+Se efectuaron comentarios en el prograna, donde de profunciza en la funcionalidad y en la complejidad de los casos solicitados.
 
 ### SICT0301: Evalúa los componentes
 
