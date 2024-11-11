@@ -7,8 +7,11 @@
 #include "Item.h"
 using namespace std;
 
+//Definición de la sublcase Comic
+
 class Comic: public Item{
 private:
+  //Variable int que ayuda a la modificación de la variable numero, heredada de Item
   int comicN;
 public:
   //constructor y destructor
@@ -18,7 +21,10 @@ public:
   int getComicN();
   void setComicN(int);
   //metodos
+  //comentarios detallados abajo
+  //Se encarga de definir la variable numero
   void unirTXT() override;
+  //Se encarga de pedirle al usuario los datos del objeto a registrar
   void crearItem() override;
 };
 
@@ -35,19 +41,22 @@ int Comic::getComicN(){
 
 //metodos
 void Comic::unirTXT(){
-  numero = '2'+ comicN;
+//Se define la sentena del id como 200, esto para la correcta diferenciación de esta clase de objetos
+  numero = 200 + comicN;
 }
 
 void Comic::crearItem(){
+  //se definen variables
   int tipo;
   int pasta;
   
+  //Se le pide al usuario que incerte numeros acorde a las caracteristicas del objeto a archivar
   cout<<"Incerte el tipo de Comic que va a archivar:"<<endl;
   cout<<"1) para Marvel"<<endl;
   cout<<"2) para DC"<<endl;
   cout<<"3) para Otro"<<endl;
   cin>>tipo;
-  cout<<endl<<comicN<<endl;
+  //W*
   while (tipo != 1 && tipo != 2 && tipo != 3){
     cout<<"Incerte una opción valida"<<endl;
     cout<<"1) para Marvel"<<endl;
@@ -59,12 +68,13 @@ void Comic::crearItem(){
   cout<<"1) para Dura"<<endl;
   cout<<"2) para Blanda"<<endl;
   cin>>pasta;
+  //W*
   while (pasta != 1 && pasta != 2){
     cout<<"Incerte una opción valida"<<endl;
     cout<<"1) para Dura"<<endl;
     cout<<"2) para Blanda"<<endl;
     cin>>pasta;
   }
-  
-  comicN = tipo + pasta;
+  //Se unifica todo en la variable comicN
+  comicN = tipo*10 + pasta;
 }
