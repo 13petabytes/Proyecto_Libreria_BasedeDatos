@@ -45,9 +45,15 @@ Como entrada el programa requiere del archivo Archibaje, el cual se requiere par
 ## Descripción de las salidas del avance de proyecto
 Como resultado de la ejecución del programa, se tendrían dos resultados posibles, el primero si el usuario archivo nuevos elementos, y el segundo si busco elementos, estos dos escenarios no son excluyentes, si se agregan datos, el txt Archibaje se vería modificado, si se busca un dato, se desplegará en pantalla si el archivo estaba en el sistema o no. Si no se modifica el archivo, si el usuario empleó la clase Registrador con árbol binario, se tendría como salida la reescritura del archivo sin cambios.
 
+## Casos de prueba
+El programa actualmente cuenta con cuatro casos de prueba para las funciones de busqueda, tres referidas a los datos actualmente almacenados en el programa, 110, 211 y 301, si se inserta esos números al solicitarse el id para buscar, marcará que se encuentran en la base de datos, si se inserta cualquier otro valor, se marcará que no existe.
+
+Las funciones encargadas de almacenar datos, se comprobarán almacenando cualquier combinación de datos que no dé como resultado los ids ya almacenados.
+El dato nuevo podrá ser buscado.
+
 ## Desarrollo de competencias
 
-Se efectuaron comentarios en el prograna, donde de profunciza en la funcionalidad y en la complejidad de los casos solicitados.
+Se efectuaron comentarios en el programa, donde se profundiza en la funcionalidad y en la complejidad de los casos solicitados.
 
 ### SICT0301: Evalúa los componentes
 
