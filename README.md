@@ -32,7 +32,7 @@ En el penúltimo avance del proyecto, se enfocó a la corrección de errores pre
 ## Instrucciones para compilar el avance de proyecto
 Ejecuta el siguiente comando en la terminal:
 
-g++ main.cpp 
+g++ -std=c++17 main.cpp 
 
 ## Instrucciones para ejecutar el avance de proyecto
 Ejecuta el siguiente comando en la terminal:
