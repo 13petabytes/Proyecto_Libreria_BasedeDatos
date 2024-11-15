@@ -1,7 +1,5 @@
 # Proyecto: Librería base de datos
 
-Este proyecto se tiene que ejecutar en la gcc versión 12.2.0
-![image](https://github.com/user-attachments/assets/1efe5124-62e5-41da-b262-82a6a4e790f6)
 
 
 El proyecto tiene el propósito de ser una base de datos funcional, para una librería de una casa. Los datos serán guardados en un txt, que será leído y modificado por el programa, ordenando los datos por el número de su id.
