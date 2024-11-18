@@ -1,3 +1,5 @@
+link submition problema 1: https://leetcode.com/problems/majority-element-ii/submissions/1456631681
+
 link submition problema 2: https://leetcode.com/problems/rotate-list/submissions/1450024915
 
 link submition problema 3: https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/submissions/1450022660
