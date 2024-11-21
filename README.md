@@ -26,7 +26,13 @@ En el penúltimo avance del proyecto, se enfocó a la corrección de errores pre
 3. Actualización del main para que el usuario puede decidir cual motor de búsqueda quiere usara
 4. Comentarios en el código que lo explica
 
+## Descripción del avance final
+Este ultimo avance se enfoco en correciones puntuales del codigo y de este mismo documento, que buscaban mejorar la utilidad del programa para el usuario.
 
+### Cambios sobre el segundo avance
+1. Inclución de metodo para revisar datos gruardados
+2. Remplazo de bubble sort por merge sort
+3. Correción de errores de la función "comer", del arbol binario.
 ## Instrucciones para compilar el avance de proyecto
 Ejecuta el siguiente comando en la terminal:
 
