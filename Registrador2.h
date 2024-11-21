@@ -10,35 +10,87 @@
 using namespace std;
 
 //Definición de clase Registrador2
-//bubleSort + busquedaSecuancial
+//MergeSort + busquedaSecuancial
 
 //Devido a la disposición del archivo, se señalara que parte coresponde a bubleSort y cual a busqueda Secuancial en las funciones, devido a que ninguna se dedica explusivamente a ordenar o a buscar
 //Aqui arriva se aclarara como se señala cada parte y sus casos corespondientes
 
-//BubleSort = BSt
-//Se opto por este metodo al ser facilmente aplicable dentro de una función, ahorando la necesidad de llamar a una tersera función dentro de archivar y por un gusto personal por el metodo de ordenamiento
-//n = numero de elementos de la lista
-//peor caso: O(n^2), esto se deve a que el numero de comparaciones e intermabios es cuadratico, realizando el numero maximo de intercambios
-//mejor caso: O(n^2), la notación asintónica es la misma, al no estar optimisada correctamente la función, teniendo que hacer comparaciones a todos los datos
-//aunque es menos que en el peor caso, la complejidad no cambia, al subir el numero de comparaciones suve n veces
-//nuestro caso promedio no difiere del peor, siendo igual de O(n^2), ya que nos encontrariamos en un numero de comparaciones entre el mejor y peor caso
+//MS = MergeSort
+//El metodo Merge Sort divide la lista en mitades hasta que cada sublista tiene un elemento, y luego las combina en orden mientras las compara, logrando un arreglo ordenado.
+//El sistema de ordenamiento merge sort, nos ofrece a primera vista, un metodo de ordenamiento de complejidad similar al de un arbol binario, O(n logn).
+//Si bien esto nos podria dar la impleción de que se comportan de forma similar, esto implicaria que tienen una velocidad de respuesta igual, solo cuando se trata de manegar un solo valor,
+//si se agregan más valores la diferencia entre metodos se acresenta cadavez más, de echo a partir de las 11 unidades a ordenar, el metodo tardaria más que uno lineal.
+//Esto sirve para demostar lo mucho que pueden variar los casos con el agregado una sola variable.
+//Los casos de este metodo de ordenamiento siempre se representan con la misma ecuación, O(n logn), esto devido al funcionamiento del metodo.
+//El mejor caso se presentaria si la lisata ya esta ordenada o solo dos valores estan desordenados de talmanera que solo se tiene que intercambiar sus lugares.
+//El peor caso para este metodo, se da si la lista a ordenar se encuentra ordenada de forma inversa al como el metodo ordena lso numeros.
+//El caso promedio se encontraria en el punto dedio de los dos anteriores.
+//Por ultimo, se destaca el uso de multiples funciones de este metodo, que junto a su metodo de ordenamiento da origen a su complejidad.
 
-/*codigo:    
-    for (int i = lista.size() - 1; i >= 0; i--) {
-        for (int j = 0; j < i; j++) {
-            if (lista[j] > lista[j + 1]) {
-                cambio(lista, j, j + 1);
-            }
-        }
+/*codigo:
+void copyArray(vector<int>& A, vector<int>& B, int low, int high) {
+    for (int i = low; i <= high; i++) {
+        A[i] = B[i];
     }
+}
+
+void mergeArray(vector<int>& A, vector<int>& B, int low, int high, int mid) {
+    int k = low;
+    int i = low;
+    int j = mid + 1;
+
+    while (i <= mid && j <= high) {
+        if (A[i] <= A[j]) {
+            B[k] = A[i];
+            i++;
+        } else {
+            B[k] = A[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i <= mid) {
+        B[k] = A[i];
+        i++;
+        k++;
+    }
+
+    while (j <= high) {
+        B[k] = A[j];
+        j++;
+        k++;
+    }
+
+    copyArray(A, B, low, high);
+}
+
+void mergeSplit(vector<int>& A, vector<int>& B, int low, int high) {
+    if (low < high) {
+        int mid = (high + low) / 2;
+
+        mergeSplit(A, B, low, mid);
+        mergeSplit(A, B, mid + 1, high);
+
+        mergeArray(A, B, low, high, mid);
+    }
+}
+
+vector<int> ordenar(const vector<int>& lista) {
+    vector<int> v(lista);
+    vector<int> tmp(v.size());
+
+    mergeSplit(v, tmp, 0, v.size() - 1);
+    return v;
+}
 */
 
-//Busqueda Secuancial = BSl
-//Se opta por este tipo de busqueda por resones similares a las que se decidio usar BubleSort, facil implementación y gusto personal por el metodo de busqueda
-//En este caso, nuestros casos se deinen por la misma función, pero esta vez es de O(n) (n = numero de datos), sevido a que la cantidad de evaluaciones es igual a la cantidad de datos
-//Mejor caso, el valor se encuentra al inicio por lo que el recorido por la lista se pausa en la primera comparación
-//Pero caso, el valñor esta al final, en este caso tenemos que recorrer toda la lista
-//Caso promedio, este caso se encuentra entre el mejor y el peor caso o la mitad de la lista, teniendo que hacer más de una comparación, pero no se tiene que compara todos los datos
+// Búsqueda Secuencial = BSl
+// Se opta por este tipo de búsqueda debido a su fácil implementación y una preferencia personal por este método.
+// En este caso, nuestros casos se definen por la misma función, pero esta vez es de O(n) (n = número de datos), debido a que la cantidad de evaluaciones es igual a la cantidad de datos.
+// Mejor caso: el valor se encuentra al inicio, por lo que el recorrido por la lista se pausa en la primera comparación.
+// Peor caso: el valor está al final; en este caso, tenemos que recorrer toda la lista.
+// Caso promedio: este caso se encuentra entre el mejor y el peor caso, o cerca de la mitad de la lista, teniendo que hacer más de una comparación, pero sin evaluar todos los datos.
 
 /*codigo:    
     while (inicio <= fin){
@@ -59,11 +111,6 @@ class Registrador2{
 private:
 //Definición de variable y de metodo privado
   vector<int> txt;
-  void cambio(vector<int> &lista,int i, int j){
-    int aux = lista[i];
-    lista[i] = lista[j];
-    lista[j] = aux;  
-  };
 public:
   //constructor y destructor
   Registrador2(){};
@@ -76,81 +123,102 @@ public:
   txt = Txt_N;
 };
   //metodos
-  void archivar(vector<int> &lista) {
-    //En esta función, al haver dos instancias de BubleSor que siempre se ejecutan, nuestros casos serian el promedio del Bublesort y cualquier otro caso (incluyendo el promedio):
-    //COmplejidades:
-    //Mejor: O(2*n^2)
-    //Peor: O(2*n^2)
-    //Promedio: O(2*n^2)
-    // BSt
-    for (int i = lista.size() - 1; i >= 0; i--) {
-        for (int j = 0; j < i; j++) {
-            if (lista[j] > lista[j + 1]) {
-                cambio(lista, j, j + 1);
-            }
+
+
+//MS
+void copyArray(vector<int>& A, vector<int>& B, int low, int high) {
+    for (int i = low; i <= high; i++) {
+        A[i] = B[i];
+    }
+}
+
+//MS
+void mergeArray(vector<int>& A, vector<int>& B, int low, int high, int mid) {
+    int k = low;
+    int i = low;
+    int j = mid + 1;
+
+    while (i <= mid && j <= high) {
+        if (A[i] <= A[j]) {
+            B[k] = A[i];
+            i++;
+        } else {
+            B[k] = A[j];
+            j++;
         }
+        k++;
     }
 
-    //se abre el archivo
-    ofstream archivo("Archibaje.txt", ios::app);
-
-    if (!archivo) {
-        cerr << "Error al abrir el archivo para escribir." << endl;
-        return;
+    while (i <= mid) {
+        B[k] = A[i];
+        i++;
+        k++;
     }
 
-    //se almacena
-    txt = lista;
-    int i = txt.size();
-    int x = 0;
-    while (x != i) {
-        archivo << txt[x] << endl;
-        x++;
+    while (j <= high) {
+        B[k] = A[j];
+        j++;
+        k++;
     }
-    archivo.close();  // Cerrar el archivo de escritura
 
-    // Se verifica que el archivo no tenga datos no contemplados
-    // para eso se realmacena el contenido del archivo en el vector lista
-    // al final se almacena de nuevo
-    ifstream archivo_lectura("Archibaje.txt");  // Abrir en modo de lectura
+    copyArray(A, B, low, high);
+}
 
+//MS
+void mergeSplit(vector<int>& A, vector<int>& B, int low, int high) {
+    if (low < high) {
+        int mid = (high + low) / 2;
+
+        mergeSplit(A, B, low, mid);
+        mergeSplit(A, B, mid + 1, high);
+
+        mergeArray(A, B, low, high, mid);
+    }
+}
+
+//MS
+vector<int> ordenar(const vector<int>& lista) {
+    vector<int> v(lista);
+    vector<int> tmp(v.size());
+
+    mergeSplit(v, tmp, 0, v.size() - 1);
+    return v;
+}
+
+void archivar(vector<int>& lista) {
+    // Leer todos los valores actuales del archivo
+    ifstream archivo_lectura("Archibaje.txt");
     if (!archivo_lectura) {
         cerr << "Error al abrir el archivo para lectura." << endl;
         return;
     }
 
     string line;
-    int f;
+    int valor;
     while (getline(archivo_lectura, line)) {
-        stringstream aux(line);  // Convertir cada línea en stringstream
-        aux >> f;
-        lista.push_back(f);
+        stringstream aux(line);
+        aux >> valor;
+        lista.push_back(valor); // Agregar valores existentes al vector
     }
     archivo_lectura.close();
 
-    //se borra el contenido del archivo
-    std::ofstream archi2("Archibaje.txt", std::ios::trunc);
-    // BSt
-    //se repite al ahverse agregado datos al vector lista
-    for (int i = lista.size() - 1; i >= 0; i--) {
-        for (int j = 0; j < i; j++) {
-            if (lista[j] > lista[j + 1]) {
-                cambio(lista, j, j + 1);
-            }
-        }
+    // Ordenar la lista completa (nuevos + existentes)
+    lista = ordenar(lista);
+
+    // Sobrescribir el archivo con la lista ordenada
+    ofstream archivo("Archibaje.txt", ios::trunc);
+    if (!archivo) {
+        cerr << "Error al abrir el archivo para escritura." << endl;
+        return;
     }
 
-    //se rearchiva el contenido
-    txt = lista;
-    i = txt.size();
-    x = 0;
-    archivo.open("Archibaje.txt", ios::out);  // Reabrir en modo de escritura
-    while (x != i) {
-        archivo << txt[x] << endl;
-        x++;
+    for (int num : lista) {
+        archivo << num << endl;
     }
     archivo.close();
 }
+
+
 
 //Aclaración, la función de busqueda se considera que tambien interactua con el usuario, por eso se dice arriva que no solo realiza la busqueda
   void buscar(int numero){  
