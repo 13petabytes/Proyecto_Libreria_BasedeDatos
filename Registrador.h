@@ -266,47 +266,64 @@ public:
 	}
 
 
-    void buscar(T val) const{
-		//Llamado de la función find de la clase Node
-		//Los casos son los mismos que con la clase find
-		//mejor caso: O(log n)
-		//caso promedio: O(log n)
-		//peor caso: O(n)
+	void buscar(T val) const{
+			//Llamado de la función find de la clase Node
+			//Los casos son los mismos que con la clase find
+			//mejor caso: O(log n)
+			//caso promedio: O(log n)
+			//peor caso: O(n)
 
-		if (root != 0) {
-		bool x = root->find(val);
-		if (x == true){
-			cout << endl << "Se encuentra en la base de datos." << endl;
-		} else{
-			cout << endl << "No se encuentra en la base de datos."<< endl;
+			if (root != 0) {
+			bool x = root->find(val);
+			if (x == true){
+				cout << endl << "Se encuentra en la base de datos." << endl;
+			} else{
+				cout << endl << "No se encuentra en la base de datos."<< endl;
+			}
+			} else {
+			cout << endl << "Error" << endl;
+	}};
+
+
+	void comerTXT() {
+		// Esta función se encarga de almacenar el contenido del archivo de texto en el árbol binario,
+		// para posteriormente borrar el contenido del archivo.
+		// Con esto, se garantiza que la función `archivar` sea la última en ser ejecutada en el programa
+		// y se asegura el correcto almacenamiento de los datos.
+
+		// Se abre el archivo
+		ifstream archi("Archibaje.txt");
+		if (!archi) {
+			cerr << "Error al abrir el archivo." << endl;
+			return;
 		}
-		} else {
-		cout << endl << "Error" << endl;
-		}};
 
-  void comerTXT(){
-	//Esta función se encarga de almacenar el contenido del archivo de texto en el arbol binario, para posterior mente borrar el contenidod el mismo
-	//Con esto se requiere que la unción archivar sea la ultima en ser ejecutada en el programa
-	//Tambien se garantiza el correcto almasenamiento de la función archivar 
-	//Se abre archivo
-    ifstream archi("Archibajetxt");
-    if(!archi) {
-      cerr << "Error al abrir el archivo."<<endl;
-    }
-	//se definen variables
-    string auxstr;
-    stringstream aux;
-    aux << archi.rdbuf();
-    if (!aux.str().empty()){
-	//se incertan los datos del txt en el arbol, tras transformar la variable auxstr en int con stoi()
-      while(getline(archi, auxstr)){
-        add(stoi(auxstr));
-      }
-    }
-	//se sierra el archivo, para posteriormente borrarlo
-	//se hace en este orden porque resulto menos problematico al compilar
-    archi.close();
-    std::ofstream archi2("Archibaje.txt", std::ios::trunc);
-  };
+		// Se define una variable auxiliar para leer línea por línea
+		string auxstr;
+
+		// Se insertan los datos del archivo en el árbol binario,
+		// tras transformar cada línea en un entero con `stoi()`
+		while (getline(archi, auxstr)) {
+			if (!auxstr.empty()) { // Se asegura que no se procesen líneas vacías
+				try {
+					add(stoi(auxstr));
+				} catch (const invalid_argument& e) {
+					// Manejo de errores si la línea no contiene un número válido
+					cerr << "Error: no se pudo convertir la línea a un número entero: " << auxstr << endl;
+				}
+			}
+		}
+
+		// Se cierra el archivo, para posteriormente borrarlo
+		// Se realiza en este orden para evitar problemas durante la compilación
+		archi.close();
+
+		// Se abre nuevamente el archivo en modo truncado para vaciar su contenido
+		ofstream archi2("Archibaje.txt", ios::trunc);
+		if (!archi2) {
+			cerr << "Error al intentar limpiar el archivo." << endl;
+		}
+	}
+
 
 };
