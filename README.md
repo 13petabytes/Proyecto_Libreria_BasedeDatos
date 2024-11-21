@@ -30,7 +30,7 @@ En el penúltimo avance del proyecto, se enfocó a la corrección de errores pre
 Este ultimo avance se enfoco en correciones puntuales del codigo y de este mismo documento, que buscaban mejorar la utilidad del programa para el usuario.
 
 ### Cambios sobre el tercer avance
-1. Inclución de metodo para revisar datos gruardados
+1. Inclución de metodo para revisar datos gruardados, a la par de ser desplegados todos los datos, tras agregar datos nuevos.
 2. Remplazo de bubble sort por merge sort
 3. Correción de errores de la función "comer", del arbol binario.
 
