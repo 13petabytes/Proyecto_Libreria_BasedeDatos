@@ -159,32 +159,34 @@ int main() {
     cout<<"Inserte la opción que desea realizar:"<<endl;
     cout<<"1) para crear un nuevo item"<<endl;
     cout<<"2) para buscar un item"<<endl;
-    cout<<"3) para salir"<<endl;
+    cout<<"3) para ver base de datos"<<endl;
+    cout<<"4) para salir"<<endl;
     int opcion;
     cin>>opcion;
     //W*
-    while(opcion != 1 && opcion != 2 && opcion != 3){
+    while(opcion < 1 || opcion > 4){
       cout<<"Inserte una opción válida"<<endl;
       cout<<"1) para crear un nuevo item"<<endl;
       cout<<"2) para buscar un item"<<endl;
-      cout<<"3) para salir"<<endl;
+      cout<<"3) para ver base de datos"<<endl;
+      cout<<"4) para salir"<<endl;
       cin>>opcion;
     }
     //While para checar que el usuario no quiere seguir en el sistema
-    while (opcion != 3){
-    //ciclo para crear un nuevo item
-    while (opcion == 1){
-      //Se repite la creación de objetos únicos en el vector, imitando a la parte anterior
-      int nComics;
-      int nLibros;
-      int nNovelas;
-      int tItems;
-      cout<<"Inserte el número de Comics que va a archivar:"<<endl;
-      cin>>nComics;
-      cout<<"Inserte el número de Libros que va a archivar:"<<endl;
-      cin>>nLibros;
-      cout<<"Inserte el número de Novelas que va a archivar:"<<endl;
-      cin>>nNovelas;
+    while (opcion != 4){
+      //ciclo para crear un nuevo item
+      while (opcion == 1){
+        //Se repite la creación de objetos únicos en el vector, imitando a la parte anterior
+        int nComics;
+        int nLibros;
+        int nNovelas;
+        int tItems;
+        cout<<"Inserte el número de Comics que va a archivar:"<<endl;
+        cin>>nComics;
+        cout<<"Inserte el número de Libros que va a archivar:"<<endl;
+        cin>>nLibros;
+        cout<<"Inserte el número de Novelas que va a archivar:"<<endl;
+        cin>>nNovelas;
         for (int i = 0; i < nComics; ++i){
           items.push_back(make_unique<Comic>());
         }
@@ -194,59 +196,82 @@ int main() {
         for (int i = 0; i < nNovelas; ++i){
           items.push_back(make_unique<Novela>());
         }
-      tItems = nComics + nLibros + nNovelas;
-      vector<int>valorI;
-      //Aquí se da el principal cambio, en vez de estar todo el almacenaje de IDs en el ciclo for
-      //Se llama a la función archivar tras haber guardado los IDs en un vector int que se usa como variable necesaria para la función archivar
-      //Esto resultó más conveniente para el MergeSort, ya que depende mucho de vectores
-      for (int i = 0; i < tItems; ++i){
-          items[i]->crearItem();
-          items[i]->unirTXT();
-          int y = items[i]->getNumero();
-          valorI.push_back(y);
+        tItems = nComics + nLibros + nNovelas;
+        vector<int>valorI;
+        //Aquí se da el principal cambio, en vez de estar todo el almacenaje de IDs en el ciclo for
+        //Se llama a la función archivar tras haber guardado los IDs en un vector int que se usa como variable necesaria para la función archivar
+        //Esto resultó más conveniente para el MergeSort, ya que depende mucho de vectores
+        for (int i = 0; i < tItems; ++i){
+            items[i]->crearItem();
+            items[i]->unirTXT();
+            int y = items[i]->getNumero();
+            valorI.push_back(y);
         }
-      //Una vez terminado el ciclo, el valor del vector se usa en la función
-      archivador.archivar(valorI);
-      //Se repite el procedimiento para decidir qué hacer tras haber terminado el archivar
-      cout<<"¿Qué desea hacer ahora?"<<endl;
-      cout<<"1) para crear un nuevo item"<<endl;
-      cout<<"2) para buscar un item"<<endl;
-      cout<<"3) para salir"<<endl;
-      cin>>opcion;
-      //W*
-      while(opcion != 1 && opcion != 2 && opcion != 3){
-        cout<<"Inserte una opción válida"<<endl;
+        //Una vez terminado el ciclo, el valor del vector se usa en la función
+        archivador.archivar(valorI);
+        //Se repite el procedimiento para decidir qué hacer tras haber terminado el archivar
+        cout<<"¿Qué desea hacer ahora?"<<endl;
         cout<<"1) para crear un nuevo item"<<endl;
         cout<<"2) para buscar un item"<<endl;
-        cout<<"3) para salir"<<endl;
+        cout<<"3) para ver base de datos"<<endl;
+        cout<<"4) para salir"<<endl;
         cin>>opcion;
+        //W*
+        while(opcion < 1 || opcion > 4){
+          cout<<"Inserte una opción válida"<<endl;
+          cout<<"1) para crear un nuevo item"<<endl;
+          cout<<"2) para buscar un item"<<endl;
+          cout<<"3) para ver base de datos"<<endl;
+          cout<<"4) para salir"<<endl;
+          cin>>opcion;
+        }
       }
-    }
-    //ciclo para buscar un item
-    while(opcion == 2){
-      int numero;
-      cout<<"Inserte el número del item que va a buscar:"<<endl;
-      cin>>numero;
-      //Aquí se da el segundo cambio más importante
-      //Se llama a la función buscar, que depende del MergeSort
-      archivador.buscar(numero);
-      cout<<"¿Qué desea hacer ahora?"<<endl;
-      cout<<"1) para crear un nuevo item"<<endl;
-      cout<<"2) para buscar un item"<<endl;
-      cout<<"3) para salir"<<endl;
-      cin>>opcion;
-      //W*
-      while(opcion != 1 && opcion != 2 && opcion != 3){
-        cout<<"Inserte una opción válida"<<endl;
+      //ciclo para buscar un item
+      while(opcion == 2){
+        int numero;
+        cout<<"Inserte el número del item que va a buscar:"<<endl;
+        cin>>numero;
+        //Aquí se da el segundo cambio más importante
+        //Se llama a la función buscar, que depende del MergeSort
+        archivador.buscar(numero);
+        cout<<"¿Qué desea hacer ahora?"<<endl;
         cout<<"1) para crear un nuevo item"<<endl;
         cout<<"2) para buscar un item"<<endl;
-        cout<<"3) para salir"<<endl;
+        cout<<"3) para ver base de datos"<<endl;
+        cout<<"4) para salir"<<endl;
         cin>>opcion;
+        //W*
+        while(opcion < 1 || opcion > 4){
+          cout<<"Inserte una opción válida"<<endl;
+          cout<<"1) para crear un nuevo item"<<endl;
+          cout<<"2) para buscar un item"<<endl;
+          cout<<"3) para ver base de datos"<<endl;
+          cout<<"4) para salir"<<endl;
+          cin>>opcion;
+        }
+      }
+      //ciclo para ver base de datos
+      while(opcion == 3){
+        archivador.desplegar();
+        cout<<"¿Qué desea hacer ahora?"<<endl;
+        cout<<"1) para crear un nuevo item"<<endl;
+        cout<<"2) para buscar un item"<<endl;
+        cout<<"3) para ver base de datos"<<endl;
+        cout<<"4) para salir"<<endl;
+        cin>>opcion;
+        //W*
+        while(opcion < 1 || opcion > 4){
+          cout<<"Inserte una opción válida"<<endl;
+          cout<<"1) para crear un nuevo item"<<endl;
+          cout<<"2) para buscar un item"<<endl;
+          cout<<"3) para ver base de datos"<<endl;
+          cout<<"4) para salir"<<endl;
+          cin>>opcion;
+        }
       }
     }
-  }
-  cout<<endl<<"Adiós";
-  return 0;
+    cout<<endl<<"Adiós";
+    return 0;
+}
 
-  }
 }
