@@ -49,14 +49,15 @@ template <class T>
 Node<T>::Node(T val, Node<T> *le, Node<T> *ri)
 	: value(val), left(le), right(ri) {}
 
-template <class T>
 
+//Se define la función add
+//para los casos de esta función se hace un simil con la clase busqueda
+//El caso promedio para esta función es que el valor a agregar sea O(log n), esto en un desbalanceado
+//En el mejor caso seria igual de O(log n), pero estando el arbol balanceado
+//En el peor caso se agregaria el valor al final de un arbol desvalanciado, siaendo similar agregarlo a la cola de una lista, O(n)
+template <class T>
 void Node<T>::add(T val) {
-	//Se define la función add
-	//para los casos de esta función se hace un simil con la clase busqueda
-	//El caso promedio para esta función es que el valor a agregar sea O(log n), esto en un desbalanceado
-	//En el mejor caso seria igual de O(log n), pero estando el arbol balanceado
-	//En el peor caso se agregaria el valor al final de un arbol desvalanciado, siaendo similar agregarlo a la cola de una lista, O(n)
+
 	if (val < value) {
 		if (left != 0) {
 			left->add(val);
@@ -72,12 +73,13 @@ void Node<T>::add(T val) {
 	}
 }
 
+//Se define la función find
+//para esta función nuestro mejor caso de busqueda, ignorando al nodo raíz, se nos presenta si el arbol esta balanciado, lo caul si el arbol es de pocos valores va a tender a serlo, O(log n)
+//nuestro caso promedio, siendo si el arbol esta desbalanceado, nuestra notación big O se designa como O(logn)
+//el peor caso se da si el valor se encuentra al final del arbol, estando este desbalanceado, en esta se recorrerian todos los nodos, O(n)
 template <class T>
 bool Node<T>::find(T val) {
-	//Se define la función find
-	//para esta función nuestro mejor caso de busqueda, ignorando al nodo raíz, se nos presenta si el arbol esta balanciado, lo caul si el arbol es de pocos valores va a tender a serlo, O(log n)
-	//nuestro caso promedio, siendo si el arbol esta desbalanceado, nuestra notación big O se designa como O(logn)
-	//el peor caso se da si el valor se encuentra al final del arbol, estando este desbalanceado, en esta se recorrerian todos los nodos, O(n)
+
 	if (val == value) {
 		return true;
 	} else if (val < value) {
@@ -87,13 +89,14 @@ bool Node<T>::find(T val) {
 	} return false;
 }
 
+//se define la función succesor
+//en esta los esenarios no varian de la función find, porloque solo se aclaran su notación asintótica
+//mejor caso: O(log n)
+//caso promedio: O(log n)
+//peor caso: O(n)
 template <class T>
 Node<T>* Node<T>::succesor() {
-	//se define la función succesor
-	//en esta los esenarios no varian de la función find, porloque solo se aclaran su notación asintótica
-	//mejor caso: O(log n)
-	//caso promedio: O(log n)
-	//peor caso: O(n)
+
 
 	Node<T> *le, *ri;
 
@@ -125,13 +128,15 @@ Node<T>* Node<T>::succesor() {
 	return child;
 }
 
+
+//se define la función remove
+//en esta los esenarios no varian de la función find, porloque solo se aclaran su notación asintótica
+//mejor caso: O(log n)
+//caso promedio: O(log n)
+//peor caso: O(n)
 template <class T>
 void Node<T>::remove(T val) {
-	//se define la función remove
-	//en esta los esenarios no varian de la función find, porloque solo se aclaran su notación asintótica
-	//mejor caso: O(log n)
-	//caso promedio: O(log n)
-	//peor caso: O(n)
+
 	Node<T> * succ, *old;
 
 	if (val < value) {
@@ -167,12 +172,13 @@ void Node<T>::remove(T val) {
 	}
 }
 
+//en este caso, y diferenciandonos de los casos anteriores, nuestros casos promedios y mejores nov avarian, pero si lo haria el peor, disminullendose la cantidad de nodos a recorrer en 1
+//mejor caso: O(log n)
+//caso promedio: O(log n)
+//peor caso: O(n - 1)
 template <class T>
 void Node<T>::removeChilds() {
-	//en este caso, y diferenciandonos de los casos anteriores, nuestros casos promedios y mejores nov avarian, pero si lo haria el peor, disminullendose la cantidad de nodos a recorrer en 1
-	//mejor caso: O(log n)
-	//caso promedio: O(log n)
-	//peor caso: O(n - 1)
+
 	if (left != 0) {
 		left->removeChilds();
 		delete left;
@@ -185,9 +191,14 @@ void Node<T>::removeChilds() {
 	}
 }
 
+//se define la función inorder, que se emplea en la clase Registrador para almacenar en el txt
+//la complejidad de la misma es de O(n), siendo n el numero de valores almacenados
+//su mejor caso seria con un valor en el arbol
+//su peor es un imposible, al siempre poder haber más velores en el arbol, O(∞)
+//su caso promedio enta entre los dos anteriores
 template <class T>
 void Node<T>::inorder(std::stringstream &aux) const {
-	//se define la función inorder, que se emplea en la clase Registrador para almacenar en el txt
+	
 	if (left != 0) {
 		left->inorder(aux);
 	}
@@ -223,12 +234,13 @@ public:
 		return (root == 0);
 	};
 
-	void add(T val){
 	//Llamado de la función ad tras la confirmación de que no existe el numero
 	//Los casos para esta función serian el resultado de la convicación de los de add y el peor de find, esto puesto a que se recorreria todo el arbol si no existe el valor, quedando así
 	//mejor: O(log n) + O(n)
 	//peor: O(2n)
 	//promedio: O(log n) + O(n)
+	void add(T val){
+
 		if(root != 0){
 		if (!root->find(val)){
 			root->add(val);
@@ -265,31 +277,38 @@ public:
 		archivo.close();
 	}
 
+	//La complejidad de la función es de O(n)
+	//Los casos son los mismos que con la función inorder
+	void desplegar() const{
+		stringstream aux;
+		root->inorder(aux);  // Llama a inorder para llenar aux con el contenido del árbol
+		cout<<endl<<aux.str()<<endl<<endl;
+	}
 
+	//Llamado de la función find de la clase Node
+	//Los casos son los mismos que con la clase find
+	//mejor caso: O(log n)
+	//caso promedio: O(log n)
+	//peor caso: O(n)
 	void buscar(T val) const{
-			//Llamado de la función find de la clase Node
-			//Los casos son los mismos que con la clase find
-			//mejor caso: O(log n)
-			//caso promedio: O(log n)
-			//peor caso: O(n)
+		if (root != 0) {
+		bool x = root->find(val);
+		if (x == true){
+			cout << endl << "Se encuentra en la base de datos." << endl;
+		} else{
+			cout << endl << "No se encuentra en la base de datos."<< endl;
+		}
+		} else {
+		cout << endl << "Error" << endl;
+		}
+		desplegar();
+	};
 
-			if (root != 0) {
-			bool x = root->find(val);
-			if (x == true){
-				cout << endl << "Se encuentra en la base de datos." << endl;
-			} else{
-				cout << endl << "No se encuentra en la base de datos."<< endl;
-			}
-			} else {
-			cout << endl << "Error" << endl;
-	}};
-
-
+	// Esta función se encarga de almacenar el contenido del archivo de texto en el árbol binario,
+	// para posteriormente borrar el contenido del archivo.
+	// Con esto, se garantiza que la función `archivar` sea la última en ser ejecutada en el programa
+	// y se asegura el correcto almacenamiento de los datos.
 	void comerTXT() {
-		// Esta función se encarga de almacenar el contenido del archivo de texto en el árbol binario,
-		// para posteriormente borrar el contenido del archivo.
-		// Con esto, se garantiza que la función `archivar` sea la última en ser ejecutada en el programa
-		// y se asegura el correcto almacenamiento de los datos.
 
 		// Se abre el archivo
 		ifstream archi("Archibaje.txt");
@@ -324,6 +343,7 @@ public:
 			cerr << "Error al intentar limpiar el archivo." << endl;
 		}
 	}
+
 
 
 };
