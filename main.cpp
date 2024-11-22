@@ -15,7 +15,7 @@ using namespace std;
 
 int main() {
   //Decisión del usuario para usar motor de búsqueda
-  cout<<"¿Cuál es el motor de búsqueda que quiere usar para navegar por el programa?"<< endl;
+  cout<<"¿Cuál es el motor de búsqupeda que quiere usar para navegar por el programa?"<< endl;
   cout<<"1) para árbol binario"<< endl;
   cout<<"2) para MergeSort + búsqueda Secuencial"<< endl;
   cout<<"Una vez escogido un motor, tiene que reabrir el programa para usar el otro"<< endl;
@@ -30,7 +30,7 @@ int main() {
     cout<<"1) para árbol binario"<< endl;
     cout<<"2) para MergeSort + búsqueda Secuencial"<< endl;
   }
-  if (motor ==1){
+if (motor == 1){
     //Main del Árbol binario
     //Declaración de objetos y vector
     vector<unique_ptr<Item>> items;
@@ -56,19 +56,21 @@ int main() {
     cout<<"Inserte la opción que desea realizar:"<<endl;
     cout<<"1) para crear un nuevo item"<<endl;
     cout<<"2) para buscar un item"<<endl;
-    cout<<"3) para salir"<<endl;
+    cout<<"3) para ver base de datos"<<endl;
+    cout<<"4) para salir"<<endl;
     int opcion;
     cin>>opcion;
     //W*
-    while(opcion != 1 && opcion != 2 && opcion != 3){
+    while(opcion < 1 || opcion > 4){
       cout<<"Inserte una opción válida"<<endl;
       cout<<"1) para crear un nuevo item"<<endl;
       cout<<"2) para buscar un item"<<endl;
-      cout<<"3) para salir"<<endl;
+      cout<<"3) para ver base de datos"<<endl;
+      cout<<"4) para salir"<<endl;
       cin>>opcion;
     }
-    //El menú de buscar y archivar se encierra en un while que confirma que no quiere salir el usuario
-    while (opcion != 3){
+    //El menú de buscar, archivar y desplegar se encierra en un while que confirma que no quiere salir el usuario
+    while (opcion != 4){
       //ciclo para crear un nuevo item
       while (opcion == 1){
         // Se le solicitan la cantidad de objetos disponibles a archivar al usuario
@@ -106,14 +108,16 @@ int main() {
         cout<<"¿Qué desea hacer ahora?"<<endl;
         cout<<"1) para crear un nuevo item"<<endl;
         cout<<"2) para buscar un item"<<endl;
-        cout<<"3) para salir"<<endl;
+        cout<<"3) para ver base de datos"<<endl;
+        cout<<"4) para salir"<<endl;
         cin>>opcion;
         //W*
-        while(opcion != 1 && opcion != 2 && opcion != 3){
+        while(opcion < 1 || opcion > 4){
           cout<<"Inserte una opción válida"<<endl;
           cout<<"1) para crear un nuevo item"<<endl;
           cout<<"2) para buscar un item"<<endl;
-          cout<<"3) para salir"<<endl;
+          cout<<"3) para ver base de datos"<<endl;
+          cout<<"4) para salir"<<endl;
           cin>>opcion;
         }
       }
@@ -129,25 +133,44 @@ int main() {
         cout<<"¿Qué desea hacer ahora?"<<endl;
         cout<<"1) para crear un nuevo item"<<endl;
         cout<<"2) para buscar un item"<<endl;
-        cout<<"3) para salir"<<endl;
+        cout<<"3) para ver base de datos"<<endl;
+        cout<<"4) para salir"<<endl;
         cin>>opcion;
         //W*
-        while(opcion != 1 && opcion != 2 && opcion != 3){
+        while(opcion < 1 || opcion > 4){
           cout<<"Inserte una opción válida"<<endl;
           cout<<"1) para crear un nuevo item"<<endl;
           cout<<"2) para buscar un item"<<endl;
-          cout<<"3) para salir"<<endl;
+          cout<<"3) para ver base de datos"<<endl;
+          cout<<"4) para salir"<<endl;
+          cin>>opcion;
+        }
+      }
+      //ciclo para ver base de datos
+      while(opcion == 3){
+        archivador.desplegar();
+        cout<<"¿Qué desea hacer ahora?"<<endl;
+        cout<<"1) para crear un nuevo item"<<endl;
+        cout<<"2) para buscar un item"<<endl;
+        cout<<"3) para ver base de datos"<<endl;
+        cout<<"4) para salir"<<endl;
+        cin>>opcion;
+        //W*
+        while(opcion < 1 || opcion > 4){
+          cout<<"Inserte una opción válida"<<endl;
+          cout<<"1) para crear un nuevo item"<<endl;
+          cout<<"2) para buscar un item"<<endl;
+          cout<<"3) para ver base de datos"<<endl;
+          cout<<"4) para salir"<<endl;
           cin>>opcion;
         }
       }
     }
+    //se archiva el contenido del árbol
+    archivador.archivar();
 
-  //se archiva el contenido del árbol
-  archivador.archivar();
-
-  cout<<endl<<"Adiós";
-  return 0;
-
+    cout<<endl<<"Adiós";
+    return 0;
 } else if(motor == 2){
     //No cambia mucho el cómo está estructurado, solo ciertas partes muy concretas
     //La estructura general es la misma
