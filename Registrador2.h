@@ -16,7 +16,6 @@ using namespace std;
 //Aqui arriva se aclarara como se señala cada parte y sus casos corespondientes
 
 //MS = MergeSort
-//El metodo Merge Sort divide la lista en mitades hasta que cada sublista tiene un elemento, y luego las combina en orden mientras las compara, logrando un arreglo ordenado.
 //El sistema de ordenamiento merge sort, nos ofrece a primera vista, un metodo de ordenamiento de complejidad similar al de un arbol binario, O(n logn).
 //Si bien esto nos podria dar la impleción de que se comportan de forma similar, esto implicaria que tienen una velocidad de respuesta igual, solo cuando se trata de manegar un solo valor,
 //si se agregan más valores la diferencia entre metodos se acresenta cadavez más, de echo a partir de las 11 unidades a ordenar, el metodo tardaria más que uno lineal.
@@ -25,7 +24,6 @@ using namespace std;
 //El mejor caso se presentaria si la lisata ya esta ordenada o solo dos valores estan desordenados de talmanera que solo se tiene que intercambiar sus lugares.
 //El peor caso para este metodo, se da si la lista a ordenar se encuentra ordenada de forma inversa al como el metodo ordena lso numeros.
 //El caso promedio se encontraria en el punto dedio de los dos anteriores.
-//Por ultimo, se destaca el uso de multiples funciones de este metodo, que junto a su metodo de ordenamiento da origen a su complejidad.
 
 /*codigo:
 void copyArray(vector<int>& A, vector<int>& B, int low, int high) {
@@ -216,12 +214,33 @@ void archivar(vector<int>& lista) {
         archivo << num << endl;
     }
     archivo.close();
+
+
 }
 
+//Esta función tiene un nievel de complejidad lineal, O(n), siendo n el numero de valores a desplegar
+//El mejor caso se da si solo hay un valor.
+//El peor caso no existe, ya que siempre existiria un peor caso ipotetico, por lo que se puede representar como O(∞), a diferencia de los otros dos casos.
+//El caso promedio se encontraria entre estos dos.
+void desplegar(){
+    vector<int> cadenaN;
+    int lineaAlmacenar;
 
+    ifstream archivo( "Archibaje.txt" );
+    while(!archivo.eof()){
+        archivo>>lineaAlmacenar;
+        cadenaN.push_back(lineaAlmacenar);
+    }
+
+    int i = 0;
+    while (i < cadenaN.size()) {
+        std::cout << cadenaN[i] << endl;
+        i++;
+    }
+}
 
 //Aclaración, la función de busqueda se considera que tambien interactua con el usuario, por eso se dice arriva que no solo realiza la busqueda
-  void buscar(int numero){  
+void buscar(int numero){  
         //variables
     int mitad;
     int inicio = 0;
@@ -254,6 +273,13 @@ void archivar(vector<int>& lista) {
     if (cadenaN[inicio] != numero){
         cout<<endl<<"La Figura no se encuentra en la base de datos"<<endl;
     }
-    cout<<endl<<"La Figura se encuentra en la base de datos"<<endl;;
-    };
+    cout<<endl<<"La Figura se encuentra en la base de datos"<<endl;
+    int i = 0;
+
+    while (i < cadenaN.size()) {
+        std::cout << cadenaN[i] << " ";
+        i++;
+    }
+};
+
 };
