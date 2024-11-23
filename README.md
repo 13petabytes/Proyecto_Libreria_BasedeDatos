@@ -27,12 +27,12 @@ En el penúltimo avance del proyecto, se enfocó a la corrección de errores pre
 4. Comentarios en el código que lo explica
 
 ## Descripción del avance final
-Este ultimo avance se enfoco en correciones puntuales del codigo y de este mismo documento, que buscaban mejorar la utilidad del programa para el usuario.
+Este último avance se enfocó en correcciones puntuales del código y de este mismo documento, que buscaban mejorar la utilidad del programa para el usuario.
 
 ### Cambios sobre el tercer avance
-1. Inclución de metodo para revisar datos gruardados, a la par de ser desplegados todos los datos, tras agregar datos nuevos.
-2. Remplazo de bubble sort por merge sort
-3. Correción de errores de la función "comer", del arbol binario.
+1. Inclusión de método para revisar datos guardados, a la par de ser desplegados todos los datos, tras agregar datos nuevos.
+2. Reemplazo de bubble sort por merge sort
+3. Corrección de errores de la función "comer", del árbol binario.
 
    
 ## Instrucciones para compilar el avance de proyecto
@@ -50,35 +50,30 @@ Como entrada el programa requiere del archivo Archibaje, el cual se requiere par
 
 ## Descripción de las salidas del avance de proyecto
 Como resultado de la ejecución del programa, se tendrían dos resultados posibles, el primero si el usuario archivo nuevos elementos, y el segundo si busco elementos, estos dos escenarios no son excluyentes, si se agregan datos, el txt Archibaje se vería modificado, si se busca un dato, se desplegará en pantalla si el archivo estaba en el sistema o no. Si no se modifica el archivo, si el usuario empleó la clase Registrador con árbol binario, se tendría como salida la reescritura del archivo sin cambios.
+Si el usuario emplea la función encargada de desplegar la base de datos, se desplegará la base de datos, siendo esta la única salida que se puede repetir múltiples veces, sin contar el mensaje de valor encontrado o no encontrado.
 
 ## Casos de prueba
 El programa actualmente cuenta con cuatro casos de prueba para las funciones de busqueda, tres referidas a los datos actualmente almacenados en el programa, 110, 211 y 301, si se inserta esos números al solicitarse el id para buscar, marcará que se encuentran en la base de datos, si se inserta cualquier otro valor, se marcará que no existe.
 
 Las funciones encargadas de almacenar datos, se comprobarán almacenando cualquier combinación de datos que no dé como resultado los ids ya almacenados.
-El dato nuevo podrá ser buscado.
+El dato nuevo podrá ser buscado. Si se emplea la nueva función se podrá ver la base de datos,
 
 ## Desarrollo de competencias
 
-Se efectuaron comentarios en el programa, donde se profundiza en la funcionalidad y en la complejidad de los casos solicitados.
-
 ### SICT0301: Evalúa los componentes
 
-El programa emplea dos propuestas de ordenamiento y búsqueda. El la primera (en la clase Registrador 2) y menos optimizada, tenemos el uso de Bubble Sort y Búsqueda Secuencial, teniendo estos una complejidad de O(n^2), por parte del metodo de ordenamiento, y de O(n). Por otro lado la clase Registrador, al emplear un árbol binario, su complejidad algorítmica es de O(log n), por lo que presenta un caso promedio de uso mejor, tanto en busqueda como en ordenamiento de datos, a la par que el peor caso posible es significativamente mejor. A continuación se presenta una gráfica que representa esto, la línea azul representa el Bubble Sort, la roja la Búsqueda Secuencial y la última el árbol binario:
-![image](https://github.com/user-attachments/assets/30cb02a2-6bed-4179-aa93-c27a86d5b3c2)
+El programa emplea dos propuestas de ordenamiento y búsqueda. El la primera (en la clase Registrador 2) y menos optimizada, tenemos el uso de Merge Sort y Búsqueda Secuencial, teniendo estos una complejidad de O(n log n), por parte del método de ordenamiento, y de O(n). Por otro lado la clase Registrador, al emplear un árbol binario, su complejidad algorítmica es de O(log n), por lo que presenta un caso promedio de uso mejor, tanto en búsqueda como en ordenamiento de datos. 
+Las complejidades de los motores para las 3 acciones principales que se efectúan se puede ver en esta tabla, la razón de que el desplegar base de datos siempre sea O(n) se da porque siempre se tarda en proporción a la cantidad de datos, tanto porque en el motor del Registrador 2 se recorren todos los datos en orden y en el método semejante en el archivo Registrador, se emplea la función Inorder como apoyo, la cual recorre todo los datos del árbol uno por uno, concluyendo de nuevo con la complejidad de O(n). Los métodos de búsqueda al desplegar la base de datos, se les agrega la complejidad de la función desplegar.
 
+![image](https://github.com/user-attachments/assets/617899fe-a8d8-4f3f-b894-c0a5affaefa2)
 
-### SICT0302: Toma decisiones
+Se efectuaron comentarios en el programa, donde se profundiza en la funcionalidad y en la complejidad de los casos solicitados. Más casos específicos como add de Registrador se aclaran en comentarios en el código, a la par de la complejidad de las funciones de la clase nodo empleada para el arbol binario.
 
-Si bien en esta entrega se tomaron decisiones en las que no se concretizo en un modelo en el que se decante una preferencia por un sistema de ordenamiento u otro, este punto y el siguiente se formularán a favor de la implementación del árbol binario como unico metodo de ordenamiento y búsqueda.
+#Grafica funciones Registrador:
+![image](https://github.com/user-attachments/assets/f60e1c63-79ad-48e9-9060-7f0e0d52f4da)
 
-Como bien se explicó en la competencia anterior, el árbol binario presenta una complejidad algorítmica mucho mejor que los métodos empleados en la clase Registrador2, por lo que para una mejor efectividad del software, el árbol binario es simplemente mejor. Con respecto a las funciones encargadas a interactuar con el archivo txt, el árbol binario presenta una implementaciones bastante sencillas, las cuales dan pie a más de una modificación de los datos del árbol por ejecución del programa, pero siempre registrando sólo una vez los datos en el archivo.
+#Grafica funciones Registrador 2:
+![image](https://github.com/user-attachments/assets/57947239-5642-4a97-9d52-42857fc363f8)
 
-### SICT0303: Implementa acciones científicas
-
-Para este proyecto se emplearon las notaciones asintóticas para el correcto análisis del rendimiento de las funciones, al encontrarse que el árbol binario funciona con una complejidad logarítmica, siendo solo superada por una complejidad constante, O(1), el manejo de bases de datos es significativamente mejor que con la implementación del ordenamiento por Bubble sort y búsqueda mediante Búsqueda Secuencial. Esta diferencia es despreciable en bases de datos chicas, pero muy notable en bases de datos grandes. Como ejemplo, si se tiene una base de datos de 100 elementos, el sistema de Bubble sort, si se tiene una base de datos de tamaño 100 y pasa a ser de tamaño 1000, tardaría un total de 100 ms, con un tiempo de referencia de 1 ms. Mientras que el árbol binario, en el mismo caso, tarda aproximadamente 1.5 ms.
-
-  #Cálculos:
-
-![image](https://github.com/user-attachments/assets/4660c715-e33d-4698-8141-17e4ce8a01b0)
 
 
