@@ -69,10 +69,10 @@ Las complejidades de los motores para las 3 acciones principales que se efectúa
 
 Se efectuaron comentarios en el programa, donde se profundiza en la funcionalidad y en la complejidad de los casos solicitados. Más casos específicos como add de Registrador se aclaran en comentarios en el código, a la par de la complejidad de las funciones de la clase nodo empleada para el arbol binario.
 
-# Grafica funciones Registrador:
+### Grafica funciones Registrador:
 ![image](https://github.com/user-attachments/assets/f60e1c63-79ad-48e9-9060-7f0e0d52f4da)
 
-# Grafica funciones Registrador 2:
+### Grafica funciones Registrador 2:
 ![image](https://github.com/user-attachments/assets/57947239-5642-4a97-9d52-42857fc363f8)
 
 
