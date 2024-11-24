@@ -63,12 +63,13 @@ El dato nuevo podrá ser buscado. Si se emplea la nueva función se podrá ver l
 ### SICT0301: Evalúa los componentes
 
 El programa emplea dos propuestas de ordenamiento y búsqueda. El la primera (en la clase Registrador 2) y menos optimizada, tenemos el uso de Merge Sort y Búsqueda Secuencial, teniendo estos una complejidad de O(n log n), por parte del método de ordenamiento, y de O(n). Por otro lado la clase Registrador, al emplear un árbol binario, su complejidad algorítmica es de O(log n), por lo que presenta un caso promedio de uso mejor, tanto en búsqueda como en ordenamiento de datos. 
-Las complejidades de los motores para las 3 acciones principales que se efectúan se puede ver en esta tabla, la razón de que el desplegar base de datos siempre sea O(n) se da porque siempre se tarda en proporción a la cantidad de datos, tanto porque en el motor del Registrador 2 se recorren todos los datos en orden y en el método semejante en el archivo Registrador, se emplea la función Inorder como apoyo, la cual recorre todo los datos del árbol uno por uno, concluyendo de nuevo con la complejidad de O(n). Los métodos de búsqueda al desplegar la base de datos, se les agrega la complejidad de la función desplegar.
+Las complejidades de los motores para las 3 acciones principales que se efectúan se puede ver en esta tabla, donde se muestran los casos promedios, la razón de que el desplegar base de datos siempre sea O(n) se da porque siempre se tarda en proporción a la cantidad de datos, tanto porque en el motor del Registrador 2 se recorren todos los datos en orden y en el método semejante en el archivo Registrador, se emplea la función Inorder como apoyo, la cual recorre todo los datos del árbol uno por uno, concluyendo de nuevo con la complejidad de O(n). Los métodos de búsqueda al desplegar la base de datos, se les agrega la complejidad de la función desplegar. Ya que las funciones se pueden efectuar de manera independeinte, la complejidad general seria la función más grande.
 
-![image](https://github.com/user-attachments/assets/44bc2e0a-d852-4b10-bf20-4fc0fd25b907)
+![image](https://github.com/user-attachments/assets/807c6e4c-4fbd-4a00-a9d8-4b8cee8daccd)
 
 
-Se efectuaron comentarios en el programa, donde se profundiza en la funcionalidad y en la complejidad de los casos solicitados. Más casos específicos como add de Registrador se aclaran en comentarios en el código, a la par de la complejidad de las funciones de la clase nodo empleada para el arbol binario. A la par de aclarar los mejores, peores y casos promedios. Se destaca el echo de que las funciones que tienen contacto con el usuario suelen tener más complejidad de lo que deverian tener hipoteticamente hablando, ya que se emplea más de una función de
+
+Se efectuaron comentarios en el programa, donde se profundiza en la funcionalidad y en la complejidad de los casos solicitados. Más casos específicos como add de Registrador se aclaran en comentarios en el código, a la par de la complejidad de las funciones de la clase nodo empleada para el arbol binario. A la par de aclarar los mejores, peores y casos promedios. Se destaca el echo de que las funciones que tienen contacto con el usuario suelen tener más complejidad de lo que deverian tener hipoteticamente hablando, ya que son el conglomerado de más de una función, sumandoce las complejidades.
 
 ### Grafica funciones Registrador:
 ![image](https://github.com/user-attachments/assets/82a3f6c4-3715-402e-987d-3e319f5bbc9f)
@@ -78,4 +79,11 @@ Se efectuaron comentarios en el programa, donde se profundiza en la funcionalida
 ![image](https://github.com/user-attachments/assets/57947239-5642-4a97-9d52-42857fc363f8)
 
 
+### SICT0302: Toma decisiones
+
+Si bien en esta entrega se tomaron decisiones en las que no se concretizo en un modelo en el que se decante una preferencia por un sistema de ordenamiento u otro, este punto y el siguiente se formularán a favor de la implementación del árbol binario como unico metodo de ordenamiento y búsqueda.
+
+Como bien se explicó en la competencia anterior, el árbol binario presenta una complejidad algorítmica mucho mejor que los métodos empleados en la clase Registrador2, por lo que para una mejor efectividad del software, el árbol binario es simplemente mejor. Lo curioso de observar es el cómo evolucionan las complejidades al crecer los datos empleados, al tener el Mergesort una complejidad similar a la del árbol binario, O(n*logn) y O(logn), lo esperable es un comportamiento similar de ambos métodos, pero como se puede ver en la siguiente gráfica, en la que se comparan las dos complejidades con la del Bubblesort (y=x sirve para facilitar la lectura del gráfico). Se mantiene el árbol binario como mejor método, pero se destaca el mejor funcionamiento del Mergesort sobre el Bubblesort.
+
+![image](https://github.com/user-attachments/assets/965e5fb1-0cbd-45b2-a39a-e7a7e022bcc4)
 
