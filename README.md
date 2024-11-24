@@ -43,7 +43,7 @@ g++ -std=c++17 main.cpp
 ## Instrucciones para ejecutar el avance de proyecto
 Ejecuta el siguiente comando en la terminal:
 
-./tercer_avance 
+./entrega_final
 
 ## Descripción de las entradas del avance de proyecto
 Como entrada el programa requiere del archivo Archibaje, el cual se requiere para combinar los nuevos datos con los ya existentes, asegurándose de que el archivo posea los datos ordenados. A la par se requiere de que el usuario vaya insertando los datos requeridos, estos son de carácter numérico, en el caso de que se inserte un carácter que no sea un número arábigo, con los símbolos occidentales, de insertar otro tipo de carácter el programa se rompe.
