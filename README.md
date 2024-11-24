@@ -65,12 +65,14 @@ El dato nuevo podrá ser buscado. Si se emplea la nueva función se podrá ver l
 El programa emplea dos propuestas de ordenamiento y búsqueda. El la primera (en la clase Registrador 2) y menos optimizada, tenemos el uso de Merge Sort y Búsqueda Secuencial, teniendo estos una complejidad de O(n log n), por parte del método de ordenamiento, y de O(n). Por otro lado la clase Registrador, al emplear un árbol binario, su complejidad algorítmica es de O(log n), por lo que presenta un caso promedio de uso mejor, tanto en búsqueda como en ordenamiento de datos. 
 Las complejidades de los motores para las 3 acciones principales que se efectúan se puede ver en esta tabla, la razón de que el desplegar base de datos siempre sea O(n) se da porque siempre se tarda en proporción a la cantidad de datos, tanto porque en el motor del Registrador 2 se recorren todos los datos en orden y en el método semejante en el archivo Registrador, se emplea la función Inorder como apoyo, la cual recorre todo los datos del árbol uno por uno, concluyendo de nuevo con la complejidad de O(n). Los métodos de búsqueda al desplegar la base de datos, se les agrega la complejidad de la función desplegar.
 
-![image](https://github.com/user-attachments/assets/28cdb14a-ebf1-43c6-a03e-f6f06e657ac5)
+![image](https://github.com/user-attachments/assets/44bc2e0a-d852-4b10-bf20-4fc0fd25b907)
 
-Se efectuaron comentarios en el programa, donde se profundiza en la funcionalidad y en la complejidad de los casos solicitados. Más casos específicos como add de Registrador se aclaran en comentarios en el código, a la par de la complejidad de las funciones de la clase nodo empleada para el arbol binario.
+
+Se efectuaron comentarios en el programa, donde se profundiza en la funcionalidad y en la complejidad de los casos solicitados. Más casos específicos como add de Registrador se aclaran en comentarios en el código, a la par de la complejidad de las funciones de la clase nodo empleada para el arbol binario. A la par de aclarar los mejores, peores y casos promedios. Se destaca el echo de que las funciones que tienen contacto con el usuario suelen tener más complejidad de lo que deverian tener hipoteticamente hablando, ya que se emplea más de una función de
 
 ### Grafica funciones Registrador:
-![image](https://github.com/user-attachments/assets/f60e1c63-79ad-48e9-9060-7f0e0d52f4da)
+![image](https://github.com/user-attachments/assets/82a3f6c4-3715-402e-987d-3e319f5bbc9f)
+
 
 ### Grafica funciones Registrador 2:
 ![image](https://github.com/user-attachments/assets/57947239-5642-4a97-9d52-42857fc363f8)
