@@ -87,3 +87,35 @@ Como bien se explicó en la competencia anterior, el árbol binario presenta una
 
 ![image](https://github.com/user-attachments/assets/965e5fb1-0cbd-45b2-a39a-e7a7e022bcc4)
 
+### SICT0303: Implementa acciones científicas
+
+Las funciones encargadas de la consulta de información, por cada motor son las siguientes:
+
+Registrador:
+
+void buscar(T val) const, está emplea como apoyo la función find de la clase node para recorrer el árbol, junto con la función desplegar, próxima a ser explicada.
+
+void desplegar() const, esta se apoya de la función inorder de la clase node para recolectar los datos almacenados de manera óptima para su lectura.
+
+Registrador 2:
+
+void buscar(int numero), usa como método de busca la búsqueda secuencial, la cual va reduciendo en mitades cadáver más chicas, las base de datos a analizar, a base de ir comparando datos con el deseado a encontrar. Esta función se apoya del mismo método que la siguiente.
+
+void desplegar(), este método lo único que hace es recorrer la lista termino por termino mientras despliega los datos, esto se hace con un ciclo while.
+
+Las funciones encargadas de la lectura y edición de archivos son las siguientes:
+
+Registrador:
+
+Se divide las actividades, archivar escribe y comer lee.
+
+void archivar(), se apoya de la función inorder, para guardar los datos en el txt.
+
+void comerTXT(), se encarga de leer el txt para agregar los datos al árbol binario, para posteriormente eliminar el contenido del txt.
+
+
+Registrador 2:
+
+Se unifican las dos actividades en una sola función.
+
+void archivar(vector<int>& lista),  se encarga de unificar los datos del txt y los que se desea añadir mediante el método Mergesort, para posteriormente reescribir el txt.
